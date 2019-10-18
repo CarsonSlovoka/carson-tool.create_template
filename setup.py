@@ -1,7 +1,7 @@
 from distutils.core import setup
 from pathlib import Path
 
-VERSION_NUMBER = '0.0.0.dev'
+VERSION_NUMBER = '0.0.0'
 LIST_SCRIPTS = [str(script_file) for script_file in Path('Scripts').glob('*.*')]
 GITHUB_URL = 'https://github.com/CarsonSlovoka/carson-tool.create_template'
 
