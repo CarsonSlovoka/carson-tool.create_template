@@ -3,10 +3,10 @@ Create Template
 ===================
 
 :Source Code: https://github.com/CarsonSlovoka/carson-tool.create_template/blob/master/Carson/Tool/CreateTemplate/create_template.py
-:Compatible with: Python >3.6
+:Compatible: Python >3.6
 :Platform: Windows
 :License: `Apache 2.0`_
-:Author Document: https://carsonslovoka.github.io/CarsonDoc/
+:Author Doc: https://carsonslovoka.github.io/CarsonDoc/
 
 .. sectnum::
 

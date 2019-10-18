@@ -1,7 +1,8 @@
 from distutils.core import setup
 from pathlib import Path
 
-VERSION_NUMBER = '0.0.0'
+VERSION_NUMBER = '0.0.1'
+DOWNLOAD_VERSION = '0.0.0'
 LIST_SCRIPTS = [str(script_file) for script_file in Path('Scripts').glob('*.*')]
 GITHUB_URL = 'https://github.com/CarsonSlovoka/carson-tool.create_template'
 
@@ -29,7 +30,7 @@ setup(
     long_description_content_type='text/x-rst',  # text/markdown
     keywords=['templates'],
 
-    download_url=f'{GITHUB_URL}/tarball/v{VERSION_NUMBER}',
+    download_url=f'{GITHUB_URL}/tarball/v{DOWNLOAD_VERSION}',
     python_requires='>=3.6.2,',
 
     zip_safe=False,
