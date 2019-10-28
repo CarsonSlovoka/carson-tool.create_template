@@ -4,6 +4,9 @@ pep-0000.ref
 Title
 """
 
+import inspect
+import sys
+
 import colorama
 from colorama.ansi import AnsiFore
 from colorama import Fore, Back
@@ -13,19 +16,29 @@ def highlight_print(msg: str, fore_color: AnsiFore = Fore.RED) -> None:
     print(Back.LIGHTYELLOW_EX + fore_color + msg)
 
 
-def demo():
-    pass
+def test_demo():
+    """
+    demo
+    """
+    print(eval(inspect.currentframe().f_code.co_name).__doc__)
 
 
 def main():
-    dict_run = {0: (demo.__name__, "for demo use", lambda: demo()),
-                }
+    cur_module = sys.modules[__name__]
+    list_test_functions = [(name.replace('test_', ''), func) for name, func in
+                           [item for item in inspect.getmembers(cur_module, inspect.isfunction)]
+                           if name.startswith('test_')]
+
+    dict_run = dict()
+    for idx, (name, fun) in enumerate(list_test_functions):
+        dict_run[idx] = (name, fun)
+
     highlight_print(f"{'Action Number':<15} {'func_name':<20} {'description':<40}")
-    [print(Fore.BLUE + f"{key:<15} {func_name:<20} {description:<40}") for key, (func_name, description, func) in dict_run.items()]
+    [print(Fore.BLUE + f"{key:<15} {func_name:<20}") for key, (func_name, func) in dict_run.items()]
     case = int(input('run case:'))
     if case not in dict_run:
         return
-    func = dict_run[case][2]
+    func = dict_run[case][1]
     func()
 
 
@@ -40,6 +53,6 @@ if __name__ == '__main__':
     g_args = arg_parser.parse_args()
     highlight_print('GLOBAL ARGUMENT PARSER')
     print(f"{'key':<20} {'value':<40}")
-    for key, value in vars(g_args).items():
-        print(f"{key:<20} {value if value is not None else '':<40}")
+    for _key, _value in vars(g_args).items():
+        print(f"{_key:<20} {_value if _value is not None else '':<40}")
     main()
