@@ -29,9 +29,7 @@ def main():
                            [item for item in inspect.getmembers(cur_module, inspect.isfunction)]
                            if name.startswith('test_')]
 
-    dict_run = dict()
-    for idx, (name, fun) in enumerate(list_test_functions):
-        dict_run[idx] = (name, fun)
+    dict_run = {idx: (name, fun) for idx, (name, fun) in enumerate(list_test_functions)}
 
     highlight_print(f"{'Action Number':<15} {'func_name':<20} {'description':<40}")
     [print(Fore.BLUE + f"{key:<15} {func_name:<20}") for key, (func_name, func) in dict_run.items()]
