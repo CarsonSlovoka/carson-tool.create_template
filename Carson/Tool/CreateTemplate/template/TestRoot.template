@@ -22,17 +22,20 @@ def main():
         dict_funcs = {name: func for name, func in inspect.getmembers(cur_module, inspect.isfunction)}
         func = dict_funcs.get(ROOT_MAIN_NAME)
         if func:
-            dict_modules[cur_module_name] = cur_module
+            dict_modules[cur_module_name] = dict()
+            dict_modules[cur_module_name]['module'] = cur_module
+            dict_modules[cur_module_name]['func'] = dict_funcs
 
-    highlight_print(f"{'Action Number':<15} {'module_name':<20} {'description':<40}")
+    highlight_print(f"{'Action Number':<15} {'module_name':<30} {'description':<40}")
     dict_run_module = {idx: module_name for idx, module_name in enumerate(dict_modules)}
-    [print(Fore.BLUE + f"{idx:<15} {module_name:<20} {dict_modules[module_name].__doc__.replace(chr(10), '|')}") for idx, module_name, in dict_run_module.items()]
+    [print(Fore.BLUE + f"{idx:<15} {module_name:<30} {dict_modules[module_name].__doc__.replace(chr(10), '|')}") for idx, module_name, in dict_run_module.items()]
 
-    case = int(input('run module:'))
-    if case not in dict_run_module:
+    case = input("run module: \n(input module_name or it's index)\n:")
+    if (eval(case) not in dict_run_module  # by index
+            and case not in dict_modules):  # by name
         return
-    select_module_name = dict_run_module[case]
-    dict_run_func = {name: func for name, func in inspect.getmembers(dict_modules[select_module_name], inspect.isfunction)}
+    select_module_name = dict_run_module[eval(case)] if isinstance(eval(case), int) else case
+    dict_run_func = dict_modules[select_module_name]['func']
     dict_run_func[ROOT_MAIN_NAME]()  # or you can run other methods. (of course, these methods should exist at that scripts)
 
 
