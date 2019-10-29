@@ -44,7 +44,7 @@ class FormatText:
 if __name__ == '__main__':
     colorama.init(autoreset=True)
 
-    from argparse import ArgumentParser, RawTextHelpFormatter, Namespace
+    from argparse import ArgumentParser, RawTextHelpFormatter
 
     text = FormatText.text
     format_text = FormatText([(20, '<'), (60, '<')])
@@ -74,10 +74,10 @@ if __name__ == '__main__':
 
     g_args = arg_parser.parse_args()
     if g_args.option == 'open':
-        startfile(Path('template'))
+        startfile(TEMPLATE_DIR)
         exit(0)
     if g_args.list:
-        [print(template_file_path.stem) for template_file_path in Path('template').glob(f'{g_args.list}.template')]
+        [print(template_file_path.stem) for template_file_path in TEMPLATE_DIR.glob(f'{g_args.list}.template')]
         exit(0)
 
     for attr in ['ref', 'outfile']:
