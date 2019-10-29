@@ -26,15 +26,26 @@ Install
 USAGE
 ===============
 
-1. put your template at the ``template directory``, and that name just like ``{template_name}.template`` (i.e. the suffix is equal **template**)
+- ``create_template.bat [REFERENCE TEMPLATE] [OUTPUT FILE NAME]`` to create template, for example: ``create_template.bat PEP PEP.0484.py``
+- ``create_template.bat -l *`` to get all available template
+- ``create_template.bat -o open`` open template directory so that you can put your template file there.
 
-    .. note:: The path of template directory, which located at ``Python\Lib\site-packages\Carson\Tool\CreateTemplate\template``
+positional arguments:
+  -ref                   reference template
+  -outfile               output file name
 
-#. create_template.bat {template_name} {output file name}
-    - first argument means: ref : template_name
-    - second argument means: new_file_name: output file name
+optional arguments:
+  -h, --help            show this help message and exit
+  --list LIST, -l LIST
+    example: -l *
 
-    example: ``create_template.bat PEP PEP.0484.py``
+    description: list current available template. (accept regex)
 
+  --option OPTION, -o OPTION
+        .. csv-table:: Option
+            :header: Example, Description
+            :widths: 20, 60
+
+            -o open, "open template directory so that you can put your template file there."
 
 .. _`Apache 2.0`: https://github.com/CarsonSlovoka/carson-tool.create_template/blob/master/LICENSE
