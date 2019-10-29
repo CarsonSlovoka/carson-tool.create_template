@@ -48,4 +48,8 @@ optional arguments:
 
             -o open, "open template directory so that you can put your template file there."
 
+
+.. image:: https://github.com/CarsonSlovoka/carson-tool.create_template/blob/master/demo/usage.gif?raw=true
+    :alt: usage.gif
+
 .. _`Apache 2.0`: https://github.com/CarsonSlovoka/carson-tool.create_template/blob/master/LICENSE
